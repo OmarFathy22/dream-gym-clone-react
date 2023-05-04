@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialStateValue = {};
+const initialStateValue = false;
 export const exerciseSlice = createSlice({
-  name: "exercise",
+  name: "refElement",
   initialState: { value: initialStateValue },
   reducers: {
-    SelectedExercise: (state, action) => {
+    refelement: (state, action) => {
       state.value = action.payload;
     },
   },
 });
-export const { SelectedExercise } = exerciseSlice.actions;
+export const { refelement } = exerciseSlice.actions;
 export default exerciseSlice.reducer;

@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { Suspense, lazy, useEffect, useRef } from 'react'
 import styled from 'styled-components';
-import SearchResults from '../../components/SearchResults';
+import Loading from '../Loading';
+// import SearchResults from '../../components/SearchResults';
+const SearchResults = lazy(() => import('../../components/SearchResults'));
+
 export const ExercisesContainer = styled.div`
   width: 100%;
   display: flex;
@@ -56,9 +59,11 @@ export const ExerciseName = styled.div`
 `
 export const ThirdSection = () => {
   return (
-    <div id='ThirdSection' style={{  animation: "animate 1s 1" , transition: "all 1s ease-in-out"}}>
-      <SearchResults/>
-    </div>
+  <Suspense fallback={<Loading/>}>
+      <div id='ThirdSection' style={{  animation: "animate 1s 1" , transition: "all 1s ease-in-out"}}>
+        <SearchResults/>
+      </div>
+  </Suspense>
   )
 }
 

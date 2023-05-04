@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 // Import Swiper React components
 import { Swiper } from "swiper/react";
 
@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination , EffectCube } from "swiper";
 import Move from "../components/MoveSlider";
+// const Move = lazy(() => import('../components/MoveSlider'));
+
 export default function App({SlideRef , Delay , children}:any) {
   const handleNext = () => {
     SlideRef.current.swiper.slideNext();

@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
-import ONE from '../../components/exerciseDetails/ONE';
+import React, { Suspense, lazy, useEffect } from 'react'
+import Loading from '../Loading';
+// import ONE from '../../components/exerciseDetails/ONE';
+const ONE = lazy(() => import('../../components/exerciseDetails/ONE'));
 
 
 type Props = {}
@@ -9,9 +11,11 @@ const Exercises = (props: Props) => {
     window.scrollTo({top:0})
   },[])
   return (
-    <div >
-      <ONE/>
-    </div>
+<Suspense fallback={<Loading/>}>
+      <div >
+        <ONE/>
+      </div>
+</Suspense>
   )
 }
 

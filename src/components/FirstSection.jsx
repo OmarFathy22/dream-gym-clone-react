@@ -10,7 +10,7 @@ const FirstSection = () => {
   };
   return (
     <main className="flex items-center ">
-        <section  style={{  animation: "animate 1s 1" , transition: "all 1s"}} className=" laptop:mt-20 flex flex-1 justify-center flex-col h-[99.9vh]">
+        <section  style={{  animation: "animate 1s 1" , transition: "all 1s"}} className=" laptop:mt-[160px] flex flex-1 justify-center flex-col h-[99.9vh]">
           <div className="relative mobile:items-center justify-start desktop:h-[90%] flex flex-col gap-6 items-start">
             <h3 className="text-red-500 text-2xl font-medium">Fintness Club</h3>
             <h1 className="text-[45px] font-bold">
@@ -29,7 +29,7 @@ const FirstSection = () => {
           </h1>
           </div>
         </section>
-        <section className="hidden laptop:flex laptop:absolute laptop:top-[120px] laptop:right-[50px] ">
+        <section style={{  animation: "animate 1s 1" , transition: "all 1s"}} className="hidden laptop:flex laptop:absolute laptop:top-[120px] laptop:right-[50px] ">
           <img
             className="h-[100vh] object-fill w-[100%] relative z-10"
             width={500}

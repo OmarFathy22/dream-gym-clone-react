@@ -6,10 +6,15 @@ import Loading from "../Loading";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { doc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import SimilarbyTarget from "./SimilarbyTarget";
-import SimilarByEquipment from "./SimilarByEquipment";
-import SimilarYoutube from "./SimilarYoutube";
-import Footer from "../Footer";
+import  {Suspense, lazy} from 'react'
+
+const SimilarbyTarget = lazy(() => import('./SimilarbyTarget'));
+const SimilarByEquipment = lazy(() => import('./SimilarByEquipment'));
+const SimilarYoutube = lazy(() => import('./SimilarYoutube'));
+
+// import SimilarbyTarget from "./SimilarbyTarget";
+// import SimilarByEquipment from "./SimilarByEquipment";
+// import SimilarYoutube from "./SimilarYoutube";
 const Section = styled.section`
   width: 100%;
   display: flex;
@@ -43,48 +48,49 @@ const Details = () => {
   
   <div className="pt-20">
      {value?.data() &&
-  <div>
-       <ParentSection>
-       <Main className="flex items-center">
-         <Section  style={{  animation: "animate 1s 1" , transition: "all 1s"}} >
-           <h1 className="text-[40px] font-bold  ">{value?.data()?.SELECTEDITEM.name}</h1>
-           {value?.data()?.SELECTEDITEM.gifUrl && (
-             <img     
-               className="max-h-[500px] w-[800px]"
-               width={550}
-               height={500}
-               src={value.data()?.SELECTEDITEM.gifUrl}
-               alt="image"
-             />
-           )}
-           <p>
-             Exercieses Keep you strong. {value?.data()?.SELECTEDITEM.name} is one of the best.
-             exercieses to target your {value?.data()?.SELECTEDITEM.target}.It will help you improve
-             your mood and gain energy
-           </p>
-           <article className="flex  gap-[30px] w-full">
-             {arrayData.map((item , index) => {
-               return(
-                 <div key={index} className="flex w-full flex-col justify-center gap-3 items-center">
-               <div className="bg-yellow-100 rounded-full p-5">
-                 <img width={40} height={40} src={item} alt="icon" />
+<Suspense fallback={<Loading/>}>
+    <div>
+         <ParentSection>
+         <Main className="flex items-center">
+           <Section  style={{  animation: "animate 1s 1" , transition: "all 1s"}} >
+             <h1 className="text-[40px] font-bold  ">{value?.data()?.SELECTEDITEM.name}</h1>
+             {value?.data()?.SELECTEDITEM.gifUrl && (
+               <img     
+                 className="max-h-[500px] w-[800px]"
+                 width={550}
+                 height={500}
+                 src={value.data()?.SELECTEDITEM.gifUrl}
+                 alt="image"
+               />
+             )}
+             <p>
+               Exercieses Keep you strong. {value?.data()?.SELECTEDITEM.name} is one of the best.
+               exercieses to target your {value?.data()?.SELECTEDITEM.target}.It will help you improve
+               your mood and gain energy
+             </p>
+             <article className="flex  gap-[30px] w-full">
+               {arrayData.map((item , index) => {
+                 return(
+                   <div key={index} className="flex w-full flex-col justify-center gap-3 items-center">
+                 <div className="bg-yellow-100 rounded-full p-5">
+                   <img width={40} height={40} src={item} alt="icon" />
+                 </div>
+                 <h4 className="font-semibold">{
+                  index === 0 ? value?.data()?.SELECTEDITEM?.bodyPart : index === 1 ? value?.data()?.SELECTEDITEM?.equipment : value?.data()?.SELECTEDITEM?.target
+                 }</h4>
                </div>
-               <h4 className="font-semibold">{
-                index === 0 ? value?.data()?.SELECTEDITEM?.bodyPart : index === 1 ? value?.data()?.SELECTEDITEM?.equipment : value?.data()?.SELECTEDITEM?.target
-               }</h4>
-             </div>
-               )
-             })}
-           </article>
-         </Section>
-       </Main>
-    
-         {value && <SimilarbyTarget target={value?.data()?.SELECTEDITEM?.target}  />}
-         {value && <SimilarByEquipment equipment={value?.data()?.SELECTEDITEM?.equipment} />}
-         {value && <SimilarYoutube NameOfExercise={value?.data()?.SELECTEDITEM?.name} />}
-     </ParentSection>
-     <Footer />
-  </div>
+                 )
+               })}
+             </article>
+           </Section>
+         </Main>
+      
+           {value && <SimilarbyTarget target={value?.data()?.SELECTEDITEM?.target}  />}
+           {value && <SimilarByEquipment equipment={value?.data()?.SELECTEDITEM?.equipment} />}
+           {value && <SimilarYoutube NameOfExercise={value?.data()?.SELECTEDITEM?.name} />}
+       </ParentSection>
+    </div>
+</Suspense >
      }
       
   </div>

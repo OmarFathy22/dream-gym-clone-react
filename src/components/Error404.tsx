@@ -5,9 +5,9 @@ const Wrong = () => {
     <>
       <Helmet>
         <title>Error404</title>
-        <style>
+        {/* <style>
           {`
-            @import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+            // @import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
 
 html,
 body{
@@ -184,9 +184,11 @@ div{
   }
 }
             `}
-        </style>
+        </style> */}
       </Helmet>
       <div />
+      
+      <div className="h-[100vh] fixed top-0 right-0 left-0 bottom-0 bg-red-500 z-[100000]">
       <svg
         id="svgWrap_2"
         xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +211,7 @@ div{
           />
         </g>
       </svg>
-      <svg
+      {/* <svg
         id="svgWrap_1"
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
@@ -230,7 +232,7 @@ div{
             d="M688.33 232.67h-37.1V149.7H520.39c-2.64 0-5.1-.5-7.36-1.49-2.27-.99-4.23-2.31-5.88-3.96-1.65-1.65-2.95-3.61-3.89-5.88s-1.42-4.67-1.42-7.22V29.62h36.82v82.98h112.57V29.62h37.1v203.05z"
           />
         </g>
-      </svg>
+      </svg> */}
       <svg>
         <defs>
           <filter id="glow">
@@ -247,6 +249,7 @@ div{
         </defs>
       </svg>
       <h2>Page Not Found</h2>
+      </div>
     </>
   );
 };

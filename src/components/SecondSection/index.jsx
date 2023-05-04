@@ -5,7 +5,10 @@ import "swiper/css/scrollbar";
 import styled from "styled-components";
 import "swiper/css";
 import "swiper/css/navigation";
-import ForTesting from "../ForTesting";
+import Loading from "../Loading";
+// import ForTesting from "../ForTesting";
+import {Suspense, lazy} from 'react'
+const ForTesting = lazy(() => import('../ForTesting'));
 
 const Main = styled.main`
   margin: 200px 0 150px 0;
@@ -58,7 +61,8 @@ export const ExercisesName = styled.h1`
 export default function SecondSection() {
 
   return (
-    <Main id="SecondSection" style={{  animation: "animate 1s 1" , transition: "all 1s"}}>
+   <Suspense fallback={<Loading/>}>
+      <Main id="SecondSection" style={{  animation: "animate 1s 1" , transition: "all 1s"}}>
       <Text>
         Awesome Exercises You <br /> Should Know
       </Text>
@@ -66,6 +70,7 @@ export default function SecondSection() {
         <ForTesting/>
       </CardsBox>
     </Main>
+   </Suspense>
   );
 }
 

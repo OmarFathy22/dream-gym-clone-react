@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -11,7 +11,8 @@ import { ExerciseCard } from "../../components/ThirdSection";
 import { ExercisesContainer } from "../../components/ThirdSection";
 import "swiper/swiper-bundle.min.css";
 import Loading from "../../components/Loading";
-import ForSwiper from "../ForSwiper";
+// import ForSwiper from "../ForSwiper";
+const ForSwiper = lazy(() => import('../ForSwiper'));
 import axios from "axios";
 
 
@@ -33,7 +34,6 @@ const Main = styled.div`
 const SecondSection = ({ NameOfExercise  }: any) => {
   const [isLoading, setisLoading] = useState(true)
   const [Data, setData] = useState([]);
-  console.log("Youtube Section" , NameOfExercise);
   useEffect(() => {
   }, [Data])
   useEffect(() => {
@@ -54,7 +54,6 @@ const SecondSection = ({ NameOfExercise  }: any) => {
 
       try {
         const response = await axios.request(options);
-        console.log("api array " , response.data.data);
         setisLoading(false)
         setData(response.data.data)
 
@@ -69,33 +68,35 @@ const SecondSection = ({ NameOfExercise  }: any) => {
     return <Loading/>
   }
   return (
-    <Main style={{  animation: "animate 1s 1" , transition: "all 1s ease-in-out"}} >
-      <h1 className="mobile:text-[24px] tablet:text-[30px] text-center w-full font-bold">
-        Similar <span className="text-red-500">Youtube </span> Videos
-      </h1>
-      <ExercisesContainer>
-        { Data.length && <ForSwiper SlideRef={SlideRef} Delay = {600000}>
-          {Data.length > 0 && Data.map((item: any, index: number) => {
-            return (
-              <ExerciseCard key={index} className="!rounded-lg">
-                <SwiperSlide
-                 key={index}
-                  className="!h-[100%] !w-full !flex !justify-center mb-10 flex-col "
-                >
-                  <div className="!rounded-lg !h-[300px] !w-full bg-white"
+  <Suspense fallback={<Loading/>}>
+      <Main style={{  animation: "animate 1s 1" , transition: "all 1s ease-in-out"}} >
+        <h1 className="mobile:text-[24px] tablet:text-[30px] text-center w-full font-bold">
+          Similar <span className="text-red-500">Youtube </span> Videos
+        </h1>
+        <ExercisesContainer>
+          { Data.length && <ForSwiper SlideRef={SlideRef} Delay = {600000}>
+            {Data.length > 0 && Data.slice(0, Math.min(Data.length , 4)).map((item: any, index: number) => {
+              return (
+                <ExerciseCard key={index} className="!rounded-lg">
+                  <SwiperSlide
+                   key={index}
+                    className="!h-[100%] !w-full !flex !justify-center mb-10 flex-col "
                   >
-                   {item?.videoId  ?   <iframe allowFullScreen className="!w-[100%]  !h-[300px] !rounded-lg block" width="420" height="345" src={"https://www.youtube.com/embed/" + item?.videoId}></iframe>
-                   : <Loading/>
-                   }
-                  </div>
-                </SwiperSlide>
-              </ExerciseCard>
-            );
-          })}
-        </ForSwiper>}
-        {Data.length < 1 && <h1 className='text-2xl text-center mb-10 font-bold'>No Exercises loaded <br/>Please refresh The Page  </h1>}
-      </ExercisesContainer>
-    </Main>
+                    <div className="!rounded-lg !h-[300px] !w-full bg-white"
+                    >
+                     {item?.videoId  ?   <iframe allowFullScreen className="!w-[100%]  !h-[300px] !rounded-lg block" width="420" height="345" src={"https://www.youtube.com/embed/" + item?.videoId}></iframe>
+                     : <Loading/>
+                     }
+                    </div>
+                  </SwiperSlide>
+                </ExerciseCard>
+              );
+            })}
+          </ForSwiper>}
+          {Data.length < 1 && <h1 className='text-2xl text-center mb-10 font-bold'>No Exercises loaded <br/>Please refresh The Page  </h1>}
+        </ExercisesContainer>
+      </Main>
+  </Suspense>
   );
 };
 
