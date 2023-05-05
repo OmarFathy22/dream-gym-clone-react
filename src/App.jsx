@@ -1,15 +1,16 @@
+/* eslint-disable no-undef */
 import Root from "./components/Root";
 import Exercises from "./components/Exercises/index";
 import Home from "./components/Home/index";
 import NotFound from './components/Error404'
-// import ONE from './components/exerciseDetails/ONE'
-// import Omar from './components/Omar.tsx'
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+// import ONE from './components/exerciseDetails/ONE'
+// import Omar from './components/Omar.tsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
