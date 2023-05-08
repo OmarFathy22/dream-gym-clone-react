@@ -10,7 +10,7 @@ import  {Suspense, lazy} from 'react'
 
 const SimilarbyTarget = lazy(() => import('./SimilarbyTarget'));
 const SimilarByEquipment = lazy(() => import('./SimilarByEquipment'));
-// const SimilarYoutube = lazy(() => import('./SimilarYoutube'));
+const SimilarYoutube = lazy(() => import('./SimilarYoutube'));
 
 // import SimilarbyTarget from "./SimilarbyTarget";
 // import SimilarByEquipment from "./SimilarByEquipment";
@@ -87,7 +87,7 @@ const Details = () => {
       
            {value && <SimilarbyTarget target={value?.data()?.SELECTEDITEM?.target}  />}
            {value && <SimilarByEquipment equipment={value?.data()?.SELECTEDITEM?.equipment} />}
-           {/* {value && <SimilarYoutube NameOfExercise={value?.data()?.SELECTEDITEM?.name} />} */}
+           {value && <SimilarYoutube NameOfExercise={value?.data()?.SELECTEDITEM?.name} />}
        </ParentSection>
     </div>
 </Suspense >
