@@ -5,6 +5,7 @@ const Header = lazy(() => import('./Header'));
 const Footer = lazy(() => import('./Footer'));
 
 import { Outlet } from 'react-router';
+import ScrollToTop from './ScrollToTop';
 
 type Props = {}
 
@@ -12,6 +13,7 @@ const Root = (props: Props) => {
   
   return (
     <div className="overflow-hidden mx-[5%]">
+      <ScrollToTop/>
       <Header/>
       <Outlet/>
         <Footer/> 

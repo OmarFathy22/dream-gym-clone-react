@@ -5,9 +5,6 @@ import ThirdSection from "../ThirdSection";
 type Props = {}
 
 const Home = (props: Props) => {
-  useEffect(() => {
-    // window.scrollTo({top:0})
-  },[])
   return (
     <div>
       <FirstSection />

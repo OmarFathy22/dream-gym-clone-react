@@ -38,9 +38,7 @@ const SearchResults = () => {
                 });
               }}>
                 <Link  to={'/exercises'} 
-                  onClick={() => {
-                    window.scrollTo({top:0})
-                  }}
+                  
                 >
                   <img 
                     

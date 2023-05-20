@@ -7,9 +7,6 @@ const ONE = lazy(() => import('../../components/exerciseDetails/ONE'));
 type Props = {}
 
 const Exercises = (props: Props) => {
-  useEffect(() => {
-    window.scrollTo({top:0})
-  },[])
   return (
 <Suspense fallback={<Loading/>}>
       <div >
