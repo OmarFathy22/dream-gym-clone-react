@@ -75,7 +75,7 @@ const SecondSection = ({ NameOfExercise  }: any) => {
         </h1>
         <ExercisesContainer>
           { Data.length && <ForSwiper SlideRef={SlideRef} Delay = {600000}>
-            {Data.length > 0 && Data.slice(0, Math.min(Data.length , 4)).map((item: any, index: number) => {
+            {Data.length > 0 && Data.slice(0, Math.min(Data.length , 10)).map((item: any, index: number) => {
               return (
                 <ExerciseCard key={index} className="!rounded-lg">
                   <SwiperSlide

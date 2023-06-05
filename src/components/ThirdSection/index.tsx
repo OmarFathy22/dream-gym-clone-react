@@ -60,7 +60,7 @@ export const ExerciseName = styled.div`
 export const ThirdSection = () => {
   return (
   <Suspense fallback={<Loading/>}>
-      <div id='ThirdSection' style={{  animation: "animate 1s 1" , transition: "all 1s ease-in-out"}}>
+      <div id='ThirdSection' style={{animation: "animate 1s 1" , transition: "all 1s ease-in-out"}}>
         <SearchResults/>
       </div>
   </Suspense>

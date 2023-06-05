@@ -50,7 +50,7 @@ const SecondSection = ({ target  }: any) => {
         </h1>
         <ExercisesContainer>
         { value?.data() && <ForSwiper SlideRef={SlideRef} Delay = {7000}>
-            {value?.data()?.Array?.slice(0, Math.min(value.data()?.Array.length , 10)).map((item: any, index: number) => {
+            {value?.data()?.firstArray?.slice(0, Math.min(value.data()?.firstArray?.length , 20)).map((item: any, index: number) => {
               return (
                 <ExerciseCard
                 key={item.id}

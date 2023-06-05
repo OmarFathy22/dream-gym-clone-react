@@ -12,10 +12,12 @@ type Props = {}
 const Root = (props: Props) => {
   
   return (
-    <div className="overflow-hidden mx-[5%]">
+    <div className="overflow-hidden">
       <ScrollToTop/>
       <Header/>
-      <Outlet/>
+      <div className='mx-[5%]'>
+        <Outlet />
+      </div>
         <Footer/> 
     </div>
   )

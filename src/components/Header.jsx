@@ -49,7 +49,7 @@ function Header() {
   }
 
   return (
-    <header style={{ transition: "all 0.5s" }} className={'flex items-center justify-between fixed top-0 bg-white  right-[0] left-[0] !z-[1000] border-b-2 border-b-red-500  h-[80px]'}>
+    <header style={{ transition: "all 0.5s" }} className={'flex items-center justify-between fixed top-0 bg-white  right-[0] left-[0] !z-[1000] rounded-md border-b-2 border-b-red-500  h-[80px]'}>
       <div className='flex pl-5 w-[250px] items-center'>
         <Link to={"/"} className='mr-10 200screen:mr-7' >
           <img className='w-[50px] h-[50px]' height={70} width={70} src={logo} alt='logo' />
