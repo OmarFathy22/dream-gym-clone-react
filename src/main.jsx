@@ -17,7 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <Provider store = {store}>
         <HelmetProvider>
-    <App />
+    {/* <App /> */}
+    <div className='h-[100vh] w-[100vw] flex justify-center items-center'>
+      <h1 className='font-bold'>Sorry, this site is temporary down...</h1>
+    </div>
         </HelmetProvider>
 
     </Provider>
