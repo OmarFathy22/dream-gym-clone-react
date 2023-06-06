@@ -40,6 +40,7 @@ h1{
   scale: 1;
   transition: all 0.5s !important;
   cursor: pointer;
+  width: 350px;
   
 }
 .swiper-slide-1:hover{
@@ -47,8 +48,12 @@ h1{
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
 }
+.swiper-slide-1{
+  background-color: #111;
 
-.swiper-slide-1:nth-child(1n) {
+}
+
+/* .swiper-slide-1:nth-child(1n) {
   background-color: rgb(206, 17, 17);
 }
 
@@ -86,7 +91,7 @@ h1{
 
 .swiper-slide-1:nth-child(10n) {
   background-color: rgb(54, 94, 77);
-}
+} */
 
 
 
